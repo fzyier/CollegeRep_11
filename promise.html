@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Робота з Promise</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      padding: 8px 12px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    p {
+      margin-top: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Робота з Promise</h1>
+  <p>Натисніть кнопку, щоб запустити таймер з використанням Promise.</p>
+  <button id="startPromise">Запустити</button>
+  <p id="promiseMessage"></p>
+  <p><a href="index.html">На головну</a></p>
+  
+  <script>
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    document.getElementById('startPromise').addEventListener('click', () => {
+      const messageEl = document.getElementById('promiseMessage');
+      messageEl.textContent = "Очікування...";
+
+      wait(5000).then(() => {
+        messageEl.textContent = "Час вийшов!";
+        console.log("Час вийшов!");
+      });
+    });
+  </script>
+</body>
+</html>
